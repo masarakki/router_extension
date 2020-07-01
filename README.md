@@ -6,7 +6,7 @@ useful extension for rails routes
 
 ### partial routes
 
-You can partialize routes files.
+you can partialize routes files.
 
 config/routes/admin.rb
 
@@ -28,6 +28,23 @@ Rails.application.routes.draw do
 
 end
 ```
+
+### subdomain
+
+```ruby
+Rails.application.routes.draw do
+
+subdomain ENV['API_SUBDOMAIN'] do
+  namespace :api do
+  end
+end
+```
+
+if `ENV['API_SUBDOMAIN']` present, it means `constrains subdomain: ENV['API_SUBDOMAIN'] do`,
+but if not presents, just ignore this line.
+
+subdomain configuration becomes effective only when `API_SUBDOMAIN` given,
+so you can easyly ignore when development.
 
 ## Installation
 
